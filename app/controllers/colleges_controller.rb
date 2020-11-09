@@ -6,7 +6,7 @@ class CollegesController < ApplicationController
 
     def show
 
-        @college = User.find(params[:id])
+        @college = College.find(params[:id])
         if @college
             render :json => @college
         else
