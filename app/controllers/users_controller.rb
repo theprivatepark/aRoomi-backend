@@ -8,6 +8,7 @@ class UsersController < ApplicationController
               status: 500,
               errors: ['no users found']
             }
+        end
     end
 
     def show
@@ -20,10 +21,10 @@ class UsersController < ApplicationController
               errors: ['user not found']
             }
         end
-
+    end
 
     def create
-        @user = User.new(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], password[:password])
+        @user = User.new(first_name: params[:first_name], last_name: params[:last_name], username: params[:username], password: params[:password])
         if @user.save
             login!
             render json: @user

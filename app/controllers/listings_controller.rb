@@ -1,13 +1,13 @@
 class ListingsController < ApplicationController
     def index 
-        @listings = Listing.all
-        render :json => @listings :include => {:listing_pictures}
+        listings = Listing.all
+        render json: listings.to_json(include: :listing_pictures)
     end
 
     def show
         @listing = Listing.find(params[:id])
         if @listing
-            render :json => @listing :include => {:listing_pictures}
+            render :json => @listing.to_json(:include => :listing_pictures)
         else
             render json: {
             status: 500,
@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
     def create
         @listing = Listing.new(price: params[:price], description: params[:description], address: params[:address], college: params[:college_id])
         if @listing.save
-            render json: @listing :include => {:listing_pictures}
+            render :json => @listing.to_json(:include => :listing_pictures)
         end
     end
 
