@@ -7,7 +7,6 @@ User.destroy_all
     College.create(name: Faker::Educator.university)
 end
 
-anney = User.create(first_name: "anney", last_name:"park", username: "anneypark", password: "anneypark")
+User.create(first_name: "anney", last_name:"park", username: "anneypark", password: "anneypark")
 
 
-puts anney.save
