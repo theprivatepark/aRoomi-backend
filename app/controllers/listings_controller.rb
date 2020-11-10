@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
     end
         
     def create
-        @listing = Listing.new(price: params[:price], description: params[:description], address: params[:address], college: params[:college_id])
+        @listing = Listing.new(price: params[:price], description: params[:description], address: params[:address], college_id: params[:college_id])
         if @listing.save
             render :json => @listing.to_json(:include => :listing_pictures)
         end
