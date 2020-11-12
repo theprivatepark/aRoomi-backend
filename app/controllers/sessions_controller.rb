@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
 
     def create
-        @user = User.find_by(username: session_params[:username])
-
-        if @user && @user.authenticate(session_params[:password])
+        @user = User.find_by(username: params[:username])
+        
+        if @user && @user.authenticate(params[:password])
             login!
             render json: {
               logged_in: true,
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           else
             render json: { 
               status: 401,
-              errors: ['no such user', 'verify credentials and try again or signup']
+              errors: ['verify credentials and try again or signup']
             }
         end
 
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
         else
           render json: {
             logged_in: false,
-            message: 'no such user'
+            errors: ['user not found']
           }
         end
       end
@@ -47,7 +47,6 @@ class SessionsController < ApplicationController
     
     def session_params
         params.require(:user).permit(:username, :password)
-      end
     end
 
 end
