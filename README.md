@@ -4,6 +4,8 @@ aRoomi is a project build with ruby on rails with a react frontend.
 
 aRoomi is a platform for college students to find a roommate quickly that goes to their school.
 
+## This is the repo for aRoomi's backend
+To view frontend please visit: https://github.com/theprivatepark/aRoomi-backend/blob/main/README.md
 
 ## Features
 
